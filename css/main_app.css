@@ -1,0 +1,22 @@
+*
+{
+	margin:0;
+}
+
+.calendrier-app-container
+{
+	/*background:red;*/
+	width:100%;
+	height:100%;
+}
+@media (max-width: 480px) {
+    .calendrier-app-container
+    {
+        background: lightgreen;
+    }
+}
+.calendrier-app-days-table-container, td{
+
+	border-collapse:collapse;
+	border: 1px solid black;
+}
