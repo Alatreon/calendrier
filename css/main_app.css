@@ -6,17 +6,76 @@
 .calendrier-app-container
 {
 	/*background:red;*/
-	width:100%;
-	height:100%;
+	margin:0 auto;
+	width:600px;
+	height:500px;
+		margin-top:50px;/*XXXXXXXXXXXX*/
 }
-@media (max-width: 480px) {
+
+@media screen and (max-width: 600px)
+{
     .calendrier-app-container
     {
         background: lightgreen;
-    }
-}
-.calendrier-app-days-table-container, td{
+    }	
+	
+	.calendrier-app-container
+	{
+		width:100%;
+	}
 
+	.calendrier-app-days-table-container, th
+	{
+		font-size: 0.5em;
+	}
+}
+
+@media screen and (max-height: 550px)
+{
+    .calendrier-app-container
+    {
+        background: lightgreen;
+    }	
+	
+	.calendrier-app-container
+	{
+			margin-top:0px;/*XXXXXXXXXXXX*/
+		height:100%;
+	}
+}
+
+.calendrier-app-days-table-container, td
+{
 	border-collapse:collapse;
 	border: 1px solid black;
+	width:100%;
+	height:100%;
+}
+.calendrier-app-days-table-container, th
+{
+	font-size: 1em;
+}
+
+.calendrier-app-day-th-container
+{
+	width:12.85%;
+}
+
+.calendrier-app-day-td-container
+{
+	color:DarkGrey;
+    vertical-align: text-top;
+	width:14.285%;
+	height:14.285%;
+}
+#calendrier-app-table-title-container
+{
+	text-align: center;
+	border: 1px solid black;
+	font-weight: bold;
+	font-size: 2em;
+}
+.test-test-test
+{
+	color:black;
 }
