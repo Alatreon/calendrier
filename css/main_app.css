@@ -58,7 +58,7 @@
 
 .calendrier-app-day-th-container
 {
-	width:12.85%;
+	height:5%;
 }
 
 .calendrier-app-day-td-container
@@ -66,14 +66,30 @@
 	color:DarkGrey;
     vertical-align: text-top;
 	width:14.285%;
-	height:14.285%;
+	height:15.285%;
+}
+#calendrier-app-table-header-container
+{
+	text-align: center;	
+	font-weight: bold;
+	font-size: 2em;
+	width:100%;
+}
+
+#calendrier-app-table-header-left-arrow-container
+{
+	display: inline-block;
+	/*width:20%;*/
 }
 #calendrier-app-table-title-container
 {
-	text-align: center;
-	border: 1px solid black;
-	font-weight: bold;
-	font-size: 2em;
+	display: inline-block;
+	width:50%;
+}
+#calendrier-app-table-header-right-arrow-container
+{
+	display: inline-block;
+	/*width:20%;*/
 }
 .test-test-test
 {
