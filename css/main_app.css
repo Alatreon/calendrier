@@ -8,8 +8,8 @@
 	/*background:red;*/
 	margin:0 auto;
 	width:600px;
-	height:500px;
-		margin-top:50px;/*XXXXXXXXXXXX*/
+	height:550px;
+		margin-top:20px;/*XXXXXXXXXXXX*/
 }
 
 @media screen and (max-width: 600px)
@@ -30,7 +30,7 @@
 	}
 }
 
-@media screen and (max-height: 550px)
+@media screen and (max-height: 500px)
 {
     .calendrier-app-container
     {
@@ -56,24 +56,33 @@
 	font-size: 1em;
 }
 
-.calendrier-app-day-th-container
-{
-	height:5%;
-}
-
-.calendrier-app-day-td-container
-{
-	color:DarkGrey;
-    vertical-align: text-top;
-	width:14.285%;
-	height:15.285%;
-}
 #calendrier-app-table-header-container
 {
 	text-align: center;	
 	font-weight: bold;
 	font-size: 2em;
 	width:100%;
+											height:7%;
+}
+.calendrier-app-day-th-container
+{
+											height:5%;
+}
+.calendrier-app-day-tr-container:hover
+{
+	background-color:lightgrey;
+}
+#calendrier-app-day-tr-container-1:hover
+{
+	background-color:white;
+}
+.calendrier-app-day-td-container
+{
+	color:DarkGrey;
+	font-size: 1em;
+    vertical-align: text-top;
+	width:14.285%;
+											height:14.85%;
 }
 
 #calendrier-app-table-header-left-arrow-container
@@ -91,7 +100,61 @@
 	display: inline-block;
 	/*width:20%;*/
 }
-.test-test-test
+.calendrier-app-day-real-days-in-month-td-container
 {
+	font-size: 1.05em;
+	color:black;
+}
+
+/*****************************************************	*************************************************************************************************/
+
+#calendrier-app-week-table-header-container
+{
+	text-align: center;	
+	font-weight: bold;
+	font-size: 2em;
+	width:100%;
+											height:7%;
+}
+.calendrier-app-week-day-th-container
+{
+											height:5%;
+}
+.calendrier-app-week-day-td-container:hover
+{
+	background-color:lightgrey;
+}
+#calendrier-app-week-day-tr-container-1:hover
+{
+	background-color:white;
+}
+.calendrier-app-week-day-td-container
+{
+	color:DarkGrey;
+	font-size: 1em;
+    vertical-align: text-top;
+	width:14.285%;
+											height:90%;
+}
+
+#calendrier-app-week-table-header-left-arrow-container
+{
+	display: inline-block;
+	/*width:20%;*/
+}
+#calendrier-app-week-table-title-container
+{
+	display: inline-block;
+	width:50%;
+}
+#calendrier-app-week-table-header-right-arrow-container
+{
+	display: inline-block;
+	/*width:20%;*/
+}
+/*********/
+.calendrier-app-week-day-real-days-in-month-td-container
+{
+	font-size: 1.05em;
 	color:black;
 }
