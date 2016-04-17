@@ -18,7 +18,6 @@ CreateMonthView.prototype={
 		var tableCell=1;
 		var tableRow=1;
 		var dayInCurentMonth=1;
-		var sevenMonthDaysName=1;
 		var dayInCurentMonthClass="";
 		var dayDisplayed=nbDaysInLastMonth-nbFirstDay+2;
 		if(nbDaysInLastMonth-nbFirstDay+2==32){console.log('ezqsdsdfqsdfqsf');}/*Quand les premieres lignes sont bonnent*/
@@ -40,8 +39,7 @@ CreateMonthView.prototype={
 
 				if(tableRow==1)
 				{
-					this.createMonthDaysName(sevenMonthDaysName);
-					sevenMonthDaysName++;
+					this.createMonthDaysName(y+1);
 				}
 
 				else

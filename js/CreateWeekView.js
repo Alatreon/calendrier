@@ -51,8 +51,7 @@ CreateWeekView.prototype=
 
 				if(tableRow==1)
 				{
-					this.createWeekDaysName(sevenWeekDaysName);
-					sevenMonthDaysName++;
+					this.createWeekDaysName(y+1);
 				}
 
 				else
@@ -92,7 +91,7 @@ CreateWeekView.prototype=
 		$("#calendrier-app-week-table-header-container")[0].appendChild(rightArrowContainer);
 
 		$("#calendrier-app-week-table-header-left-arrow-container").text("<");
-		$("#calendrier-app-week-table-title-container").text(Self.DataCalendrier.getNameMonth(Self.DataCalendrier.currentMonth)+' ('+Self.DataCalendrier.currentMonth+') | '+	/*this.choosenYear*/ Self.DataCalendrier.choosenYear);
+		$("#calendrier-app-week-table-title-container").text(Self.DataCalendrier.getNameMonth(Self.DataCalendrier.currentMonth) +' | '+ Self.DataCalendrier.currentWeek +' | '+ Self.DataCalendrier.choosenYear);
 		$("#calendrier-app-week-table-header-right-arrow-container").text(">");
 	},
 
@@ -103,23 +102,38 @@ CreateWeekView.prototype=
 		$("#calendrier-app-week-table-header-left-arrow-container")[0].addEventListener("click", function ()
 		{
 			$('div table').remove();
+			$('div #calendrier-app-week-table-header-container').remove();
 
-			Self.DataCalendrier.currentMonth--;
+
+
+			Self.DataCalendrier.currentWeek--;
+			if(Self.DataCalendrier.currentWeek<1)
+			{
+				Self.DataCalendrier.currentWeek=5;
+				Self.DataCalendrier.currentMonth--;
+			}
+
 			if(Self.DataCalendrier.currentMonth<1)
 			{
 				Self.DataCalendrier.currentMonth=12;
-				Self.DataCalendrier.choosenYear--
+				Self.DataCalendrier.choosenYear--;
 			}
 			Self.createAll();
 
 		}, false);	
 
-		$("#calendrier-app-week-table-header-right-arrow-container")[0].addEventListener("click", function (){
-
+		$("#calendrier-app-week-table-header-right-arrow-container")[0].addEventListener("click", function ()
+		{
 			$('div table').remove();
 			$('div #calendrier-app-week-table-header-container').remove();
 
-			Self.DataCalendrier.currentMonth++;
+
+			Self.DataCalendrier.currentWeek++;
+			if(Self.DataCalendrier.currentWeek>5)
+			{
+				Self.DataCalendrier.currentWeek=1;
+				Self.DataCalendrier.currentMonth++;
+			}
 
 			if(Self.DataCalendrier.currentMonth>12)
 			{

@@ -1,6 +1,6 @@
 function CreateCalendrier () 
 {
-	this.currentView=0;
+	this.currentView=1;
 }
 
 CreateCalendrier.prototype=
@@ -9,7 +9,7 @@ CreateCalendrier.prototype=
 	{
 		if(this.currentView==1)
 		{
-			this.getWeekViewCalendrier(1);
+			this.getWeekViewCalendrier(Self.DataCalendrier.currentWeek);
 		}
 		else if(this.currentView==0)
 		{

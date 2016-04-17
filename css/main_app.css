@@ -124,13 +124,9 @@
 {
 	background-color:lightgrey;
 }
-#calendrier-app-week-day-tr-container-1:hover
-{
-	background-color:white;
-}
 .calendrier-app-week-day-td-container
 {
-	color:DarkGrey;
+	color:black;
 	font-size: 1em;
     vertical-align: text-top;
 	width:14.285%;
@@ -151,10 +147,4 @@
 {
 	display: inline-block;
 	/*width:20%;*/
-}
-/*********/
-.calendrier-app-week-day-real-days-in-month-td-container
-{
-	font-size: 1.05em;
-	color:black;
 }

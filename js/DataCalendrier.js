@@ -9,6 +9,7 @@ function DataCalendrier ()
 	
 	this.choosenYear=this.newDate.getFullYear();
 	this.choosen=this.newDate.getDay();
+	this.currentWeek=3;
 }
 DataCalendrier.prototype=
 {
