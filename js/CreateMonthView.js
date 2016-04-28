@@ -112,7 +112,7 @@ CreateMonthView.prototype={
 				if(Self.DataCalendrier.currentMonth<1)
 				{
 					Self.DataCalendrier.currentMonth=12;
-					Self.DataCalendrier.choosenYear--
+					Self.DataCalendrier.choosenYear--;
 				}
 				Self.createAll();
 

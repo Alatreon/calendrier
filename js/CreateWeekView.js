@@ -1,6 +1,8 @@
 function CreateWeekView () 
 {
-	this.numeroDeLigne;
+	this.lastWeekTab= [[],[],[],[],[],[]];
+	this.NewWeekTab=[[],[],[],[],[],[]];
+	this.equalityNextMonthBool=false;
 }
 
 CreateWeekView.prototype=
@@ -14,24 +16,14 @@ CreateWeekView.prototype=
 		$("#calendrier-app-week-day-tr-container-1")[0].appendChild(dayTitle);
 		$("#calendrier-app-week-day-th-container-"+i).text(Self.DataCalendrier.getNameJours(i));
 	},
-
-	createWeekDays : function (nbFirstDay,nbDaysInLastMonth,numeroDeLigne)
+	createWeekDays : function ()
 	{
 		var tableCell=1;
 		var tableRow=1;
 		var dayInCurentMonth=1;
 		var sevenWeekDaysName=1;
-		var dayInCurentMonthClass="";
-		var dayDisplayed=this.testTestTest(
-			nbFirstDay,
-			Self.DataCalendrier.getDaysInMonth
-			(
-				calendrier.DataCalendrier.currentMonth,
-				calendrier.DataCalendrier.choosenYear
-			),
-			nbDaysInLastMonth,
-			numeroDeLigne);
-		
+		var dayDisplayed=Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].weekTab;
+
 		//if(nbDaysInLastMonth-nbFirstDay+2==32){console.log('ezqsdsdfqsdfqsf');}
 
 		var table = document.createElement('table');	
@@ -91,7 +83,15 @@ CreateWeekView.prototype=
 		$("#calendrier-app-week-table-header-container")[0].appendChild(rightArrowContainer);
 
 		$("#calendrier-app-week-table-header-left-arrow-container").text("<");
-		$("#calendrier-app-week-table-title-container").text(Self.DataCalendrier.getNameMonth(Self.DataCalendrier.currentMonth) +' | '+ Self.DataCalendrier.currentWeek +' | '+ Self.DataCalendrier.choosenYear);
+		$("#calendrier-app-week-table-title-container").text(' '+
+			Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].weekTab[0]+' '+
+			Self.DataCalendrier.getNameMonth(Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].monthNum[0]) +' '+
+			Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].yearNum[0]+' | '+
+			(Self.DataCalendrier.weekInYear) +' | '+
+			Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].weekTab[6]+' '+
+			Self.DataCalendrier.getNameMonth(Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].monthNum[1]) +' '+
+			Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].yearNum[1] +' '
+		);
 		$("#calendrier-app-week-table-header-right-arrow-container").text(">");
 	},
 
@@ -104,74 +104,27 @@ CreateWeekView.prototype=
 			$('div table').remove();
 			$('div #calendrier-app-week-table-header-container').remove();
 
-
-
-			Self.DataCalendrier.currentWeek--;
-			if(Self.DataCalendrier.currentWeek<1)
-			{
-				Self.DataCalendrier.currentWeek=5;
-				Self.DataCalendrier.currentMonth--;
-			}
-
-			if(Self.DataCalendrier.currentMonth<1)
-			{
-				Self.DataCalendrier.currentMonth=12;
-				Self.DataCalendrier.choosenYear--;
-			}
+			Self.DataCalendrier.weekInYear--;
+			console.log(Self.DateJsonData.weekNumber.length);
+			if(Self.DataCalendrier.weekInYear<1){Self.DataCalendrier.oneLessYear();}
+			
 			Self.createAll();
 
 		}, false);	
 
 		$("#calendrier-app-week-table-header-right-arrow-container")[0].addEventListener("click", function ()
 		{
+
 			$('div table').remove();
 			$('div #calendrier-app-week-table-header-container').remove();
+			
 
-
-			Self.DataCalendrier.currentWeek++;
-			if(Self.DataCalendrier.currentWeek>5)
-			{
-				Self.DataCalendrier.currentWeek=1;
-				Self.DataCalendrier.currentMonth++;
-			}
-
-			if(Self.DataCalendrier.currentMonth>12)
-			{
-				Self.DataCalendrier.currentMonth=1;
-				Self.DataCalendrier.choosenYear++;
-			}
+			Self.DataCalendrier.weekInYear++;
+			if(Self.DataCalendrier.weekInYear<1){Self.DataCalendrier.oneLessYear();}
+			console.log(Self.DateJsonData.weekNumber.length);
 
 			Self.createAll();
 
 		}, false);
-	},
-	testTestTest : function (nbFirstDay,nbDaysInCurentMonth,nbDaysInLastMonth,numeroDeLigne)
-	{
-
-		var tableCell=1;
-		var tableRow=1;
-		var dayInCurentMonth=1;
-		var dayDisplayed=nbDaysInLastMonth-nbFirstDay+2;
-		var map = [[],[],[],[],[],[]];
-
-		for(var i=0; i<6; i++)
-		{	
-			for(var y=0; y<7; y++)
-			{
-				if(tableCell==nbFirstDay || dayInCurentMonth>nbDaysInCurentMonth)
-				{
-					dayInCurentMonth=1;
-					dayDisplayed=1;
-				}
-
-				map[i].push(dayDisplayed);
-			
-				tableCell++; 	
-				dayDisplayed++;
-				dayInCurentMonth++;
-			}
-			tableRow++;
-		}
-		return map[numeroDeLigne-1];
 	}
 }

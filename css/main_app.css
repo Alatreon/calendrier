@@ -106,13 +106,13 @@
 	color:black;
 }
 
-/*****************************************************	*************************************************************************************************/
+/************************************************************************************************************************************************/
 
 #calendrier-app-week-table-header-container
 {
 	text-align: center;	
 	font-weight: bold;
-	font-size: 2em;
+	font-size: 1.5em;
 	width:100%;
 											height:7%;
 }
@@ -135,16 +135,17 @@
 
 #calendrier-app-week-table-header-left-arrow-container
 {
+	margin-left:0px;
 	display: inline-block;
-	/*width:20%;*/
+    float: left;
 }
 #calendrier-app-week-table-title-container
 {
 	display: inline-block;
-	width:50%;
 }
 #calendrier-app-week-table-header-right-arrow-container
 {
+	margin-right:0px;
 	display: inline-block;
-	/*width:20%;*/
+    float: right;
 }

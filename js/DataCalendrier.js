@@ -2,21 +2,23 @@ function DataCalendrier ()
 {
 	this.newDate=new Date;
 	this.currentMonth=this.newDate.getMonth()+1;
+	console.log(this.currentMonth)
 	/*GetWeek*/
-	//this.getFullYear = new Date(this.newDate.getFullYear(), 0, 1);
-	//this.currentWeek = (Math.ceil((((this.newDate - this.getFullYear) / 86400000) + this.getFullYear.getDay() + 1) / 7 ))-1;
+	this.getFullYear = new Date(this.newDate.getFullYear(), 0, 1);
+	this.weekInYear = (Math.ceil((((this.newDate - this.getFullYear) / 86400000) + this.getFullYear.getDay() + 1) / 7 ))-1;
 	/******/
+	this.currentWeek=01;
 	
 	this.choosenYear=this.newDate.getFullYear();
 	this.choosen=this.newDate.getDay();
-	this.currentWeek=3;
+	this.currentMonthMaxWeek=5;
 }
 DataCalendrier.prototype=
 {
 	getDaysInMonth : function(month, year)
 	{
 		return (new Date(Date.parse(((month%12)+1).toString() + "/01/" + year)-86400000)).getDate();
-	},
+	},	
 	getNameJours : function (i)
 	{
 		if(i==0){i=1;}
@@ -89,11 +91,48 @@ DataCalendrier.prototype=
 		}
 		return month;
 	},
-	//renvoie le premier jour d'un moi d'une annee/*(1-12),9999*/ ex:this.getFirstDayInMonth(12,2000);
 	getFirstDayInMonth : function (whichMonth, Ofyear)
 	{
 		this.getNameJours((new Date(Ofyear+'-'+whichMonth+'-'+1)).getDay());
 		if( (new Date(Ofyear+'-'+whichMonth+'-'+1)).getDay()==0 ){ return 7 }
 		else { return (new Date(Ofyear+'-'+whichMonth+'-'+1)).getDay();}
 	},
+	oneMoreWeek : function()
+	{
+		this.currentWeek++;
+		
+		if(this.currentWeek>this.currentMonthMaxWeek)
+		{
+			this.currentWeek=1;
+			this.currentMonth++;
+		}
+		if(this.currentMonth>12)
+		{
+			this.currentMonth=1;
+			this.choosenYear++;
+		}
+	},
+	oneLessWeek : function()
+	{
+		this.currentWeek--;
+		if(this.currentWeek<1)
+		{
+			this.currentWeek=this.currentMonthMaxWeek;
+			this.currentMonth--;
+		}
+
+		if(this.currentMonth<1)
+		{
+			this.currentMonth=12;
+			this.choosenYear--;
+		}
+	},
+	oneMoreYear : function()
+	{
+		this.choosenYear++;
+	},
+	oneLessYear : function()
+	{
+		this.choosenYear--;
+	}
 }
