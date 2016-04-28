@@ -2,11 +2,13 @@ function DataCalendrier ()
 {
 	this.newDate=new Date;
 	this.currentMonth=this.newDate.getMonth()+1;
-	console.log(this.currentMonth)
+
 	/*GetWeek*/
 	this.getFullYear = new Date(this.newDate.getFullYear(), 0, 1);
-	this.weekInYear = (Math.ceil((((this.newDate - this.getFullYear) / 86400000) + this.getFullYear.getDay() + 1) / 7 ))-1;
+	this.weekInYear = (Math.ceil((((this.newDate - this.getFullYear) / 86400000) + this.getFullYear.getDay() + 1) / 7 ))-2;
+	console.log(this.weekInYear)
 	/******/
+
 	this.currentWeek=01;
 	
 	this.choosenYear=this.newDate.getFullYear();
@@ -94,7 +96,7 @@ DataCalendrier.prototype=
 	getFirstDayInMonth : function (whichMonth, Ofyear)
 	{
 		this.getNameJours((new Date(Ofyear+'-'+whichMonth+'-'+1)).getDay());
-		if( (new Date(Ofyear+'-'+whichMonth+'-'+1)).getDay()==0 ){ return 7 }
+		if( (new Date(Ofyear+'-'+whichMonth+'-'+1)).getDay()==0 ){ return 7 ;}
 		else { return (new Date(Ofyear+'-'+whichMonth+'-'+1)).getDay();}
 	},
 	oneMoreWeek : function()
@@ -106,6 +108,7 @@ DataCalendrier.prototype=
 			this.currentWeek=1;
 			this.currentMonth++;
 		}
+		
 		if(this.currentMonth>12)
 		{
 			this.currentMonth=1;

@@ -8,9 +8,10 @@ function CreateAppCalendrier ()
 	this.ActionCalendrier = new ActionCalendrier;
 	this.CreateCalendrier = new CreateCalendrier;
 	/************************************************/
+
 	this.DateJsonData=this.CreateDateJsonData.allDatesInYear(Self.DataCalendrier.choosenYear);
-	console.log(this.DateJsonData)
-		/******************************************/
+	
+	/***********************************************/
 }
 CreateAppCalendrier.prototype=
 {

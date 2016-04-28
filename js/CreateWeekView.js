@@ -87,7 +87,7 @@ CreateWeekView.prototype=
 			Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].weekTab[0]+' '+
 			Self.DataCalendrier.getNameMonth(Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].monthNum[0]) +' '+
 			Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].yearNum[0]+' | '+
-			(Self.DataCalendrier.weekInYear) +' | '+
+			(Self.DataCalendrier.weekInYear+1) +' | '+
 			Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].weekTab[6]+' '+
 			Self.DataCalendrier.getNameMonth(Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].monthNum[1]) +' '+
 			Self.DateJsonData.weekNumber[Self.DataCalendrier.weekInYear].yearNum[1] +' '
@@ -105,8 +105,12 @@ CreateWeekView.prototype=
 			$('div #calendrier-app-week-table-header-container').remove();
 
 			Self.DataCalendrier.weekInYear--;
-			console.log(Self.DateJsonData.weekNumber.length);
-			if(Self.DataCalendrier.weekInYear<1){Self.DataCalendrier.oneLessYear();}
+			// console.log(Self.DateJsonData.weekNumber.length);
+			if(Self.DataCalendrier.weekInYear<1)
+			{
+				Self.DataCalendrier.oneLessYear();Self.DataCalendrier.weekInYear=52;
+				Self.DateJsonData=Self.CreateDateJsonData.allDatesInYear(Self.DataCalendrier.choosenYear);
+			}
 			
 			Self.createAll();
 
@@ -120,8 +124,20 @@ CreateWeekView.prototype=
 			
 
 			Self.DataCalendrier.weekInYear++;
-			if(Self.DataCalendrier.weekInYear<1){Self.DataCalendrier.oneLessYear();}
 			console.log(Self.DateJsonData.weekNumber.length);
+			if(Self.DataCalendrier.weekInYear>=Self.DateJsonData.weekNumber.length)
+			{
+				Self.DataCalendrier.oneMoreYear();
+				Self.DataCalendrier.currentMonth=1;
+				Self.DataCalendrier.weekInYear=1;
+				Self.CreateDateJsonData.yearJsonData=
+				{
+					"weekNumber":
+						[
+						]
+				};
+				Self.DateJsonData=Self.CreateDateJsonData.allDatesInYear(Self.DataCalendrier.choosenYear);
+			}
 
 			Self.createAll();
 

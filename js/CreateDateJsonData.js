@@ -3,6 +3,7 @@ function CreateDateJsonData ()
 	this.lastWeekTab= [[],[],[],[],[],[]];
 	this.NewWeekTab=[[],[],[],[],[],[]];
 	this.equalityNextMonthBool=false;
+	this.checkIsoFour=true;
 	this.yearJsonData=
 	{
 		"weekNumber":
@@ -37,7 +38,7 @@ CreateDateJsonData.prototype=
 			}
 		}
 		if((this.lastWeekTab[6]+1)!=this.newWeekTab[0] && this.lastWeekTab[0]!=this.newWeekTab[0] && this.lastWeekTab[6]<28 && 
-			Self.DataCalendrier.currentMonth<12/* && this.lastWeekTab[1]==this.newWeekTab[1] && this.lastWeekTab[2]==this.newWeekTab[2] && this.lastWeekTab[3]==this.newWeekTab[3] && this.lastWeekTab[4]==this.newWeekTab[4] && this.lastWeekTab[5]==this.newWeekTab[5] && this.lastWeekTab[6]==this.newWeekTab[6]*/)
+			Self.DataCalendrier.currentMonth<=12/* && this.lastWeekTab[1]==this.newWeekTab[1] && this.lastWeekTab[2]==this.newWeekTab[2] && this.lastWeekTab[3]==this.newWeekTab[3] && this.lastWeekTab[4]==this.newWeekTab[4] && this.lastWeekTab[5]==this.newWeekTab[5] && this.lastWeekTab[6]==this.newWeekTab[6]*/)
 		{	
 			Self.DataCalendrier.currentMonthMaxWeek++;
 		}
@@ -99,15 +100,20 @@ CreateDateJsonData.prototype=
 		var currentWeek=Self.DataCalendrier.currentWeek;
 		var currentYear=Self.DataCalendrier.choosenYear;
 
+		this.checkIsoFour=false;
+
+		var checkIsTwentyHeight=false;
+
 		Self.DataCalendrier.currentMonth=1;
 		Self.DataCalendrier.currentWeek=1;
 		Self.DataCalendrier.choosenYear=yearNum;
+
 
 		for(var i=1; i<=incrYear; i++)
 		{
 			this.equalityNextMonth();
 
-			var yearNum =Self.DataCalendrier.choosenYear;
+			var yearNum = Self.DataCalendrier.choosenYear;
 
 			Self.DataCalendrier.oneLessWeek();
 			var beforeMonthNum=Self.DataCalendrier.currentMonth;
@@ -118,11 +124,24 @@ CreateDateJsonData.prototype=
 			Self.DataCalendrier.oneLessWeek();
 
 			var monthNum= Self.DataCalendrier.currentMonth;
-			if(i==incrYear && this.lastWeekTab[6]<28)
+
+
+			if(i==incrYear)
 			{
-				incrYear=53;
+				for(var y=0 ; y<=this.lastWeekTab.length; y++)
+				{
+					if(this.lastWeekTab[y]==28)
+					{
+						checkIsTwentyHeight=true;
+					}
+				}
+
+				if(checkIsTwentyHeight==false)
+				{
+					incrYear++;				
+				}
 			}
-			
+
 			if(this.lastWeekTab[0]>this.lastWeekTab[6])
 			{
 				if(beforeMonthNum==monthNum)
@@ -133,33 +152,49 @@ CreateDateJsonData.prototype=
 				{
 					monthNum=[beforeMonthNum,monthNum];
 				}
-
-				if(i==1)
-				{
-					yearNum=[(yearNum-1),(yearNum)];
-				}
-
-				if(i==incrYear)
-				{
-					yearNum=[(yearNum-1),(yearNum)];
-				}
 			}
 			else
 			{
-				monthNum=[monthNum,Self.DataCalendrier.currentMonth]
+				monthNum=[monthNum,Self.DataCalendrier.currentMonth];
 			}
 
-			if(i!=incrYear && i!=1){yearNum=[(yearNum),(yearNum)];}
+			/*********************/
+			if(i==1 && this.lastWeekTab[0]>this.lastWeekTab[6])
+			{
+				yearNum=[(yearNum-1),(yearNum)];
+			}
+			else if(i==incrYear && this.lastWeekTab[0]>this.lastWeekTab[6])
+			{
+				yearNum=[(yearNum),(yearNum+1)];
+			}
+			else
+			{
+				yearNum=[(yearNum),(yearNum)];				
+			}
+			/*********************/
 
-			console.log(
-				(i) +' | '+
-				yearNum +' | '+
-				monthNum +' | '+
-				this.lastWeekTab);
+			if(i==1)
+			{
+				for(var y=0 ; y<=this.lastWeekTab.length; y++)
+				{
+					if(this.lastWeekTab[y]==4)
+					{
+						this.checkIsoFour=true;
+					}
+				}
+			}
+			if(this.checkIsoFour==false)
+			{
+				this.checkIsoFour=true;
+				i--;
+			}
 
-			actualArray={"yearNum":yearNum, 'monthNum':monthNum, 'weekTab':this.lastWeekTab};
+			if(i>0)
+			{				
+				actualArray={"yearNum":yearNum, 'monthNum':monthNum, 'weekTab':this.lastWeekTab};
 
-			this.yearJsonData.weekNumber.push(actualArray);
+				this.yearJsonData.weekNumber.push(actualArray);
+			}
 
 			this.uneFoisSurDeux([5,4]);
 			Self.DataCalendrier.oneMoreWeek();
@@ -168,6 +203,8 @@ CreateDateJsonData.prototype=
 		Self.DataCalendrier.currentMonth=currentMonth;
 		Self.DataCalendrier.currentWeek=currentWeek;
 		Self.DataCalendrier.choosenYear=currentYear;
+
+		console.log(this.yearJsonData);
 		
 		return this.yearJsonData;
 	}
