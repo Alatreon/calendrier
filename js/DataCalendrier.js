@@ -6,7 +6,6 @@ function DataCalendrier ()
 	/*GetWeek*/
 	this.getFullYear = new Date(this.newDate.getFullYear(), 0, 1);
 	this.weekInYear = (Math.ceil((((this.newDate - this.getFullYear) / 86400000) + this.getFullYear.getDay() + 1) / 7 ))-2;
-	console.log(this.weekInYear)
 	/******/
 
 	this.currentWeek=01;
@@ -128,6 +127,25 @@ DataCalendrier.prototype=
 		{
 			this.currentMonth=12;
 			this.choosenYear--;
+		}
+	},
+	oneMoreMonth : function()
+	{
+		Self.DataCalendrier.currentMonth++;
+
+		if(Self.DataCalendrier.currentMonth>12)
+		{
+			Self.DataCalendrier.currentMonth=1;
+			Self.DataCalendrier.choosenYear++;
+		}
+	},
+	oneLessMonth : function()
+	{
+		Self.DataCalendrier.currentMonth--;
+		if(Self.DataCalendrier.currentMonth<1)
+		{
+			Self.DataCalendrier.currentMonth=12;
+			Self.DataCalendrier.choosenYear--;
 		}
 	},
 	oneMoreYear : function()

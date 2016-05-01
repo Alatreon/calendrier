@@ -7,6 +7,7 @@ function CreateAppCalendrier ()
 	this.CreateDateJsonData = new CreateDateJsonData;
 	this.ActionCalendrier = new ActionCalendrier;
 	this.CreateCalendrier = new CreateCalendrier;
+	this.CreateLitView = new CreateLitView;
 	/************************************************/
 
 	this.DateJsonData=this.CreateDateJsonData.allDatesInYear(Self.DataCalendrier.choosenYear);

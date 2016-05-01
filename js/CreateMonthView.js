@@ -104,6 +104,8 @@ CreateMonthView.prototype={
 	{
 		self=this;
 
+		Self.CreateLitView.createChooseCtaData("#calendrier-app-table-title-container");
+
 		$("#calendrier-app-table-header-left-arrow-container")[0].addEventListener("click", function ()
 		{
 				$('div table').remove();
