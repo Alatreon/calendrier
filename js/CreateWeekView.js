@@ -163,7 +163,7 @@ CreateWeekView.prototype=
 			
 
 			Self.DataCalendrier.weekInYear++;
-			console.log(Self.DateJsonData.weekNumber.length);
+			// console.log(Self.DateJsonData.weekNumber.length);
 			if(Self.DataCalendrier.weekInYear>=Self.DateJsonData.weekNumber.length)
 			{
 				Self.DataCalendrier.oneMoreYear();

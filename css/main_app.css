@@ -1,15 +1,15 @@
 @font-face {
-     font-family: "Bitstream Vera Serif Bold";
+     font-family: "Ubuntu Light";
     src: url(font/Ubuntu-L.ttf);
     }
 *
 {
+	font-family: "Ubuntu Light", serif;
 	margin:0;
 }
 
 .calendrier-app-container
 {
-	font-family: "Bitstream Vera Serif Bold", serif;
 	/*background:red;*/
 	margin:0 auto;
 	width: 90%;
@@ -203,10 +203,10 @@
 }
 .calendrier-app-lit-container
 {
-	position: relative;
+	position: fixed;
     width: 15%;   
     min-width: 145px;
-    margin-top: -47.4%;
+    margin-top: -40.5%;
     margin-left: 45%;
     background-color:white;
     z-index:2;

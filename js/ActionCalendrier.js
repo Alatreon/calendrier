@@ -5,171 +5,76 @@ ActionCalendrier.prototype =
 {
 	dayCliqueAction : function () 
 	{
-		/*for(var i = 0; $('.calendrier-app-day-tr-container').length>i;i++)
+
+		$('.calendrier-app-lit-day-tr-container')[1].addEventListener('click',function()
+	  	{		
+			Self.ActionCalendrier.weekMatcher(1);
+	    });
+
+		$('.calendrier-app-lit-day-tr-container')[2].addEventListener('click',function()
+	  	{
+			Self.ActionCalendrier.weekMatcher(2);
+	    });
+
+		$('.calendrier-app-lit-day-tr-container')[3].addEventListener('click',function()
+	  	{
+			Self.ActionCalendrier.weekMatcher(3);
+	    });
+
+		$('.calendrier-app-lit-day-tr-container')[4].addEventListener('click',function()
+	  	{
+			Self.ActionCalendrier.weekMatcher(4);
+	    });
+
+		$('.calendrier-app-lit-day-tr-container')[5].addEventListener('click',function()
+	  	{
+			Self.ActionCalendrier.weekMatcher(5);			
+	    });
+
+		$('.calendrier-app-lit-day-tr-container')[6].addEventListener('click',function()
+	  	{
+			Self.ActionCalendrier.weekMatcher(6);
+	    });
+
+	},
+	weekMatcher : function (lineNumber)
+	{
+		var clickWeekTab=Self.CreateDateJsonData.weekByNbLine(lineNumber);
+		var clickFirstWeekTab=Self.CreateDateJsonData.weekByNbLine(1);
+		console.log(clickWeekTab)
+		var takeFirst=true;
+		for(var i = 0; i<Self.DateJsonData.weekNumber.length; i++)
 		{
-			if(i>0)
-			{*/
-				if(Self.CreateCalendrier.currentView==0)
+			for(var y=0;y<2;y++)
+			{
+				if(Self.DateJsonData.weekNumber[i].weekTab[0]==clickWeekTab[0]&&Self.DateJsonData.weekNumber[i].monthNum[y]==Self.DataCalendrier.currentMonth && Self.DateJsonData.weekNumber[i].tableCellNum==lineNumber&&takeFirst)
 				{
+					takeFirst=false;
+					console.log(Self.DateJsonData.weekNumber[i].weekTab+' | '+Self.DateJsonData.weekNumber[i].weekTab[0]);
 
-					$('.calendrier-app-day-tr-container')[1].addEventListener('click',function()
-				  	{
-				    	console.log(1 	+' | ' +Self.DataCalendrier.currentMonth+' | '+Self.DataCalendrier.choosenYear);										
-						Self.DataCalendrier.currentWeekInMonth=1;
-				  //   	console.log(
-						// 	Self.CreateWeekView.weekByNbLine(
-
-						// 		Self.DataCalendrier.getFirstDayInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth-1,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		1
-						// 	)+' | '+ Self.DataCalendrier.currentWeekInMonth	
-						// );		
-				    });
-					$('.calendrier-app-day-tr-container')[2].addEventListener('click',function()
-				  	{
-				    	console.log(2 	+' | ' +Self.DataCalendrier.currentMonth+' | '+Self.DataCalendrier.choosenYear);
-						Self.DataCalendrier.currentWeekInMonth=2;	
-				  //   	console.log(
-						// 	Self.CreateWeekView.weekByNbLine(
-
-						// 		Self.DataCalendrier.getFirstDayInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth-1,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		2
-						// 	)+' | '+ Self.DataCalendrier.currentWeekInMonth	
-						// );		
-				    });
-					$('.calendrier-app-day-tr-container')[3].addEventListener('click',function()
-				  	{
-				    	console.log(3 	+' | ' +Self.DataCalendrier.currentMonth+' | '+Self.DataCalendrier.choosenYear);
-						Self.DataCalendrier.currentWeekInMonth=3;	
-				  //   	console.log(
-						// 	Self.CreateWeekView.weekByNbLine(
-
-						// 		Self.DataCalendrier.getFirstDayInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth-1,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		3
-						// 	)+' | '+ Self.DataCalendrier.currentWeekInMonth	
-						// );	
-				    });
-					$('.calendrier-app-day-tr-container')[4].addEventListener('click',function()
-				  	{
-				    	console.log(4	+' | ' +Self.DataCalendrier.currentMonth+' | '+Self.DataCalendrier.choosenYear);
-						Self.DataCalendrier.currentWeekInMonth=4;
-				  //   	console.log(
-						// 	Self.CreateWeekView.weekByNbLine(
-
-						// 		Self.DataCalendrier.getFirstDayInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth-1,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		4
-						// 	)+' | '+ Self.DataCalendrier.currentWeekInMonth	
-						// );		
-				    });
-					$('.calendrier-app-day-tr-container')[5].addEventListener('click',function()
-				  	{
-				    	console.log(5	+' | ' +Self.DataCalendrier.currentMonth+' | '+Self.DataCalendrier.choosenYear);
-						Self.DataCalendrier.currentWeekInMonth=5;	
-				  //   	console.log(
-						// 	Self.CreateWeekView.weekByNbLine(
-
-						// 		Self.DataCalendrier.getFirstDayInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth-1,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		5
-						// 	)+' | '+ Self.DataCalendrier.currentWeekInMonth	
-						// );	
-				    });
-					$('.calendrier-app-day-tr-container')[6].addEventListener('click',function()
-				  	{
-				    	console.log(6	+' | ' +Self.DataCalendrier.currentMonth+' | '+Self.DataCalendrier.choosenYear);
-						Self.DataCalendrier.currentWeekInMonth=6;	
-				  //   	console.log(
-						// 	Self.CreateWeekView.weekByNbLine(
-
-						// 		Self.DataCalendrier.getFirstDayInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		Self.DataCalendrier.getDaysInMonth
-						// 		(
-						// 			Self.DataCalendrier.currentMonth-1,
-						// 			Self.DataCalendrier.choosenYear
-						// 		),
-						// 		6
-						// 	)+' | '+ Self.DataCalendrier.currentWeekInMonth	
-						// );	
-				    });
+					Self.DataCalendrier.weekInYear=i;
 				}
-			/*}
-		}*/
-	}
+			}
+		}
+		takeFirst=true;
+    	console.log(lineNumber 	+' | ' +Self.DataCalendrier.currentMonth+' | '+Self.DataCalendrier.choosenYear);
+    	$('.calendrier-app-days-table-container')[0].remove()
+		$('#calendrier-app-table-header-container').remove();
+		$('#calendrier-app-week-table-header-container').remove();
+		Self.CreateLitView.litVisible=true;
+		Self.CreateCalendrier.currentView=1;
+		Self.createAll();
+	},
+	titleCliqueAction : function () 
+	{
+		$('#calendrier-app-lit-table-title-container')[0].addEventListener('click',function()
+	  	{
+			$('.calendrier-app-days-table-container')[0].remove()
+			$('#calendrier-app-table-header-container').remove();
+			$('#calendrier-app-week-table-header-container').remove();
+			Self.CreateLitView.litVisible=true;
+			Self.CreateCalendrier.currentView=0;
+			Self.createAll();
+	    },false);
+	},
 }

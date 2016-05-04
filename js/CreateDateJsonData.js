@@ -191,7 +191,8 @@ CreateDateJsonData.prototype=
 
 			if(i>0)
 			{				
-				actualArray={"yearNum":yearNum, 'monthNum':monthNum, 'weekTab':this.lastWeekTab};
+				actualArray={"yearNum":yearNum, 'monthNum':monthNum, 'weekTab':this.lastWeekTab, 'tableCellNum':Self.DataCalendrier.currentWeek};
+				// console.log("yearNum"+yearNum+ 'monthNum'+monthNum+ 'weekTab'+this.lastWeekTab+'| '+Self.DataCalendrier.currentWeek);
 
 				this.yearJsonData.weekNumber.push(actualArray);
 			}

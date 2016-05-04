@@ -11,6 +11,7 @@ function CreateAppCalendrier ()
 	/************************************************/
 
 	this.DateJsonData=this.CreateDateJsonData.allDatesInYear(Self.DataCalendrier.choosenYear);
+	// this.DateJsonData=this.CreateDateJsonData.allDatesInYear(Self.DataCalendrier.choosenYear);
 	
 	/***********************************************/
 }
@@ -24,7 +25,6 @@ CreateAppCalendrier.prototype=
 	},
 	startEventListener : function () 
 	{
-		Self.ActionCalendrier.dayCliqueAction();
 	}
 }
 
@@ -49,8 +49,6 @@ calendrier.createAll();
 				calendrier.DataCalendrier.currentMonth-1,
 				calendrier.DataCalendrier.choosenYear
 			),
-			2
-
 		);
 */
 /*
@@ -141,9 +139,10 @@ slideshowt1
 text_riche
  
 	 
-	dsmediumitalic
-	dsmediumregular
-	roboto
-	citroenlight
-	didot
-	didotitalic9*/
+
+- Qualification technique et fonctionnel des livrables. 
+- Aide à la Conception des projets et formulation de propositions.
+- Aide à la planification et coordination des équipes de production technique.
+- Aide à la création et utilisation d’environnement de développement (Git Repository, NodeJs grunt, Bower, Symfony) 
+- Création de cahier de recette.
+*/
