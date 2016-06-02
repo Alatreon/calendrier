@@ -16,13 +16,16 @@ CreateLitView.prototype={
 		$("#calendrier-app-lit-day-th-container-"+i).text((Self.DataCalendrier.getNameJours(i)).substring(0,2));
 	},
 
-	createLitDays : function (nbFirstDay,nbDaysInCurentMonth,nbDaysInLastMonth)
+	createLitDays : function ()
 	{
 		self=this;
 		var tableCell=1;
 		var tableRow=1;
 		var dayInCurentMonth=1;
 		var dayInCurentMonthClass="";
+		var nbFirstDay = Self.DataCalendrier.getFirstDayInMonth(Self.DataCalendrier.currentMonth, Self.DataCalendrier.choosenYear);
+		var nbDaysInCurentMonth = Self.DataCalendrier.getDaysInMonth(Self.DataCalendrier.currentMonth, Self.DataCalendrier.choosenYear);
+		var nbDaysInLastMonth = Self.DataCalendrier.getDaysInMonth(Self.DataCalendrier.currentMonth-1,Self.DataCalendrier.choosenYear);
 		var dayDisplayed=nbDaysInLastMonth-nbFirstDay+2;
 		if(nbDaysInLastMonth-nbFirstDay+2==32){console.log('ezqsdsdfqsdfqsf');}/*Quand les premieres lignes sont bonnent*/
 
@@ -163,7 +166,6 @@ CreateLitView.prototype={
 			$('.calendrier-app-lit-container')[0].remove();
 			$('div #calendrier-app-lit-table-header-container').remove();
 			$('body .calendrier-modale-app-lit-cont').remove();
-
 			Self.DataCalendrier.oneMoreMonth();
 
 			Self.CreateLitView.createLitDays
@@ -171,7 +173,7 @@ CreateLitView.prototype={
 				Self.DataCalendrier.getFirstDayInMonth
 				(
 					Self.DataCalendrier.currentMonth,
-					Self.DataCalendrier.choosenYear
+					Self.DataCalendrier.choosenYear	
 				),
 				Self.DataCalendrier.getDaysInMonth
 				(
@@ -197,7 +199,9 @@ CreateLitView.prototype={
 		this.monthBeforePicking=Self.DataCalendrier.currentMonth;
 
 		$(nameSelector)[0].addEventListener("click", function (e)
-		{
+		{	
+			self.litVisible=false;
+			console.log(self.litVisible)
 			if(self.litVisible==false)
 			{
 				Self.CreateCalendrier.getLitViewCalendrier();

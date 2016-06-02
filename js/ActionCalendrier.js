@@ -61,6 +61,9 @@ ActionCalendrier.prototype =
     	$('.calendrier-app-days-table-container')[0].remove()
 		$('#calendrier-app-table-header-container').remove();
 		$('#calendrier-app-week-table-header-container').remove();
+		$('#tabs-names-app-container').remove();
+		$('#tabs-contenu-app-container').remove();
+		// Self.removeAll();
 		Self.CreateLitView.litVisible=true;
 		Self.CreateCalendrier.currentView=1;
 		Self.createAll();
@@ -72,6 +75,8 @@ ActionCalendrier.prototype =
 			$('.calendrier-app-days-table-container')[0].remove()
 			$('#calendrier-app-table-header-container').remove();
 			$('#calendrier-app-week-table-header-container').remove();
+			$('#tabs-names-app-container').remove();
+			$('#tabs-contenu-app-container').remove();
 			Self.CreateLitView.litVisible=true;
 			Self.CreateCalendrier.currentView=0;
 			Self.createAll();

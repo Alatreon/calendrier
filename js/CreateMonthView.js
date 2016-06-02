@@ -13,12 +13,16 @@ CreateMonthView.prototype={
 			$("#calendrier-app-day-th-container-"+i).text(Self.DataCalendrier.getNameJours(i));
 	},
 
-	createMonthsDays : function (nbFirstDay,nbDaysInCurentMonth,nbDaysInLastMonth)
+	createMonthsDays : function ()
 	{
 		var tableCell=1;
 		var tableRow=1;
 		var dayInCurentMonth=1;
-		var dayInCurentMonthClass="";
+		var realDayInMonthView="";
+		var dayInCurentMonthDayClass="";
+		var nbFirstDay = Self.DataCalendrier.getFirstDayInMonth(Self.DataCalendrier.currentMonth, Self.DataCalendrier.choosenYear);
+		var nbDaysInCurentMonth = Self.DataCalendrier.getDaysInMonth(Self.DataCalendrier.currentMonth, Self.DataCalendrier.choosenYear);
+		var nbDaysInLastMonth = Self.DataCalendrier.getDaysInMonth(Self.DataCalendrier.currentMonth-1,Self.DataCalendrier.choosenYear);
 		var dayDisplayed=nbDaysInLastMonth-nbFirstDay+2;
 		if(nbDaysInLastMonth-nbFirstDay+2==32){console.log('ezqsdsdfqsdfqsf');}/*Quand les premieres lignes sont bonnent*/
 
@@ -41,7 +45,6 @@ CreateMonthView.prototype={
 				{
 					this.createMonthDaysName(y+1);
 				}
-
 				else
 				{
 
@@ -50,22 +53,36 @@ CreateMonthView.prototype={
 						dayInCurentMonth=1;
 						if(tableCell>27)
 						{
-							dayInCurentMonthClass="";
+							realDayInMonthView="";
 						}
 						else
 						{
-							dayInCurentMonthClass="calendrier-app-day-real-days-in-month-td-container";
+							realDayInMonthView="calendrier-app-day-real-days-in-month-td-container";
+							var NbLastDay=dayDisplayed;
 						}
 
 						dayDisplayed=1;
 					}
-					//console.log('testttt'+dayDisplayed);
+
+					if(tableCell>=nbFirstDay&&(tableCell-nbFirstDay) < NbLastDay)
+					{	
+						dayInCurentMonthDayClass="calendrier-app-day-real-days-in-month-td-container-"+dayDisplayed;
+					}
+					else
+					{
+						dayInCurentMonthDayClass="";
+					}
+
 					var day = document.createElement('td');
 					day.setAttribute("id","calendrier-app-day-td-container-"+tableCell);
-					day.setAttribute("class","calendrier-app-day-td-container "+dayInCurentMonthClass);
+					day.setAttribute("class","calendrier-app-day-td-container "+realDayInMonthView+" "+dayInCurentMonthDayClass);
 					$("#calendrier-app-day-tr-container-"+tableRow)[0].appendChild(day);
-					$("#calendrier-app-day-td-container-"+tableCell).text(dayDisplayed);
-				
+
+					var day = document.createElement('div');
+					day.setAttribute("id","calendrier-app-day-month-day-name-container-"+tableCell);
+					$("#calendrier-app-day-td-container-"+tableCell)[0].appendChild(day);
+					$("#calendrier-app-day-month-day-name-container-"+tableCell).text(dayDisplayed);
+
 					tableCell++;
 					dayDisplayed++;
 				}
@@ -85,6 +102,7 @@ CreateMonthView.prototype={
 
 		var leftArrowContainer = document.createElement("div");
 		leftArrowContainer.setAttribute("id","calendrier-app-table-header-left-arrow-container");
+
 		$("#calendrier-app-table-header-container")[0].appendChild(leftArrowContainer);
 
 		var titreCalendrierContain = document.createElement("div");
@@ -108,6 +126,7 @@ CreateMonthView.prototype={
 
 		$("#calendrier-app-table-header-left-arrow-container")[0].addEventListener("click", function ()
 		{
+			Self.removeAll();
 				$('div table').remove();
 				$('div #calendrier-app-table-header-container').remove();
 				Self.DataCalendrier.currentMonth--;
@@ -124,6 +143,7 @@ CreateMonthView.prototype={
 
 			$('div table').remove();
 			$('div #calendrier-app-table-header-container').remove();
+			Self.removeAll();
 
 			Self.DataCalendrier.currentMonth++;
 

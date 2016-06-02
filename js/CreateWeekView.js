@@ -47,6 +47,7 @@ CreateWeekView.prototype=
 	createWeekDays : function ()
 	{
 		var tableCell=1;
+		var tableCellTest=1;
 		var tableRow=1;
 		var dayInCurentMonth=1;
 		var sevenWeekDaysName=1;
@@ -82,8 +83,9 @@ CreateWeekView.prototype=
 					}
 					else
 					{
-						day.setAttribute("id","calendrier-app-week-day-td-container-"+tableCell);
+						day.setAttribute("id","calendrier-app-week-day-td-container-"+tableCellTest);
 						day.setAttribute("class","calendrier-app-week-day-td-container");
+						tableCellTest++;
 					}
 					$("#calendrier-app-week-day-tr-container-"+tableRow)[0].appendChild(day);
 					// console.log(day)
@@ -138,12 +140,12 @@ CreateWeekView.prototype=
 
 		$("#calendrier-app-week-table-header-left-arrow-container")[0].addEventListener("click", function ()
 		{
-			$('div table').remove();
-			$('div #calendrier-app-week-table-header-container').remove();
-				self.litVisible=false;
+			Self.removeAll();
+
+			self.litVisible=false;
 
 			Self.DataCalendrier.weekInYear--;
-			// console.log(Self.DateJsonData.weekNumber.length);
+			
 			if(Self.DataCalendrier.weekInYear<1)
 			{
 				Self.DataCalendrier.oneLessYear();Self.DataCalendrier.weekInYear=52;
@@ -156,10 +158,9 @@ CreateWeekView.prototype=
 
 		$("#calendrier-app-week-table-header-right-arrow-container")[0].addEventListener("click", function ()
 		{
+			Self.removeAll();
 
-			$('div table').remove();
-			$('div #calendrier-app-week-table-header-container').remove();
-				self.litVisible=false;
+			self.litVisible=false;
 			
 
 			Self.DataCalendrier.weekInYear++;

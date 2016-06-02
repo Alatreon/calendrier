@@ -23,6 +23,7 @@ DataCalendrier.prototype=
 	getNameJours : function (i)
 	{
 		if(i==0){i=1;}
+		var day;
 		switch (i)
 		{
 			case 1:

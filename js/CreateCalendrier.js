@@ -16,56 +16,27 @@ CreateCalendrier.prototype=
 			this.getWeekViewCalendrier();
 		}
 	},
+	getLitViewCalendrier : function()
+	{
+		Self.CreateLitView.createLitDays();
+		Self.CreateLitView.createLitTitle(Self.DataCalendrier.currentMonth);
+		Self.CreateLitView.createCliqueArrows(Self.DataCalendrier.currentMonth);
+	},
 	getMonthViewCalendrier : function ()
 	{
-		Self.CreateMonthView.createMonthsDays
-		(
-			Self.DataCalendrier.getFirstDayInMonth
-			(
-				Self.DataCalendrier.currentMonth,
-				Self.DataCalendrier.choosenYear
-			),
-			Self.DataCalendrier.getDaysInMonth
-			(
-				Self.DataCalendrier.currentMonth,
-				Self.DataCalendrier.choosenYear
-			),
-			Self.DataCalendrier.getDaysInMonth
-			(
-				Self.DataCalendrier.currentMonth-1,
-				Self.DataCalendrier.choosenYear
-			)
-		);
+		Self.CreateMonthView.createMonthsDays();
 		Self.CreateMonthView.createMonthTitle(Self.DataCalendrier.currentMonth);
 		Self.CreateMonthView.createCliqueArrows(Self.DataCalendrier.currentMonth);
+
+		Self.CreateMonthTask.createHtmlTask();
 	},
 	getWeekViewCalendrier : function ()
 	{
 		Self.CreateWeekView.createWeekDays();
 		Self.CreateWeekView.createWeekTitle(Self.DataCalendrier.currentWeek);
 		Self.CreateWeekView.createCliqueArrows(Self.DataCalendrier.currentMonth);
-	},
-	getLitViewCalendrier : function()
-	{
-		Self.CreateLitView.createLitDays
-		(
-			Self.DataCalendrier.getFirstDayInMonth
-			(
-				Self.DataCalendrier.currentMonth,
-				Self.DataCalendrier.choosenYear
-			),
-			Self.DataCalendrier.getDaysInMonth
-			(
-				Self.DataCalendrier.currentMonth,
-				Self.DataCalendrier.choosenYear
-			),
-			Self.DataCalendrier.getDaysInMonth
-			(
-				Self.DataCalendrier.currentMonth-1,
-				Self.DataCalendrier.choosenYear
-			)
-		);
-		Self.CreateLitView.createLitTitle(Self.DataCalendrier.currentMonth);
-		Self.CreateLitView.createCliqueArrows(Self.DataCalendrier.currentMonth);
+
+		Self.CreateWeekTask.createHtmlTask();
+		Self.WeekUiTasks.getUi();
 	}
 }

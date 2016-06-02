@@ -1,6 +1,7 @@
 function CreateAppCalendrier ()
 {
 	Self=this;
+	this.CreateJsonTask = new CreateJsonTask;
 	this.DataCalendrier = new DataCalendrier;
 	this.CreateMonthView = new CreateMonthView;
 	this.CreateWeekView = new CreateWeekView;
@@ -8,10 +9,15 @@ function CreateAppCalendrier ()
 	this.ActionCalendrier = new ActionCalendrier;
 	this.CreateCalendrier = new CreateCalendrier;
 	this.CreateLitView = new CreateLitView;
+	this.CreateTabs = new CreateTabs;
+	this.CreateWeekTask = new CreateWeekTask;
+	this.CreateMonthTask = new CreateMonthTask;
+	this.WeekUiTasks = new WeekUiTasks;
+	
 	/************************************************/
 
 	this.DateJsonData=this.CreateDateJsonData.allDatesInYear(Self.DataCalendrier.choosenYear);
-	// this.DateJsonData=this.CreateDateJsonData.allDatesInYear(Self.DataCalendrier.choosenYear);
+
 	
 	/***********************************************/
 }
@@ -20,37 +26,25 @@ CreateAppCalendrier.prototype=
 	createAll : function ()
 	{
 		this.CreateCalendrier.getDefaultCalendrier();
-		this.startEventListener()
-
+		this.CreateTabs.getDefaultTabs();
 	},
-	startEventListener : function () 
+	removeAll : function ()
 	{
+		$('div table').remove();
+		$('div #calendrier-app-week-table-header-container').remove();
+		$('#tabs-names-app-container').remove();
+		$('#tabs-contenu-app-container').remove();
+		// $('.calendrier-app-days-table-container')[0].remove()
+		// $('#calendrier-app-table-header-container').remove();
+		// $('#calendrier-app-week-table-header-container').remove();
 	}
 }
 
-var calendrier = new CreateAppCalendrier;
+		var calendrier = new CreateAppCalendrier;
 
-calendrier.createAll();
+		calendrier.createAll();
+		calendrier.CreateJsonTask.findMonthDayNum(2,5);
 
-/*calendrier.CreateWeekView.weekByNbLine(
-
-			calendrier.DataCalendrier.getFirstDayInMonth
-			(
-				calendrier.DataCalendrier.currentMonth,
-				calendrier.DataCalendrier.choosenYear
-			),
-			calendrier.DataCalendrier.getDaysInMonth 
-				(
-				calendrier.DataCalendrier.currentMonth,
-				calendrier.DataCalendrier.choosenYear
-			),
-			calendrier.DataCalendrier.getDaysInMonth
-			(
-				calendrier.DataCalendrier.currentMonth-1,
-				calendrier.DataCalendrier.choosenYear
-			),
-		);
-*/
 /*
 BOINTEG:
 		DS.COM : https://admincom-dspp-driveds-integ.driveds.com/
@@ -68,81 +62,9 @@ BOTEST:
 		DS.COM: https://ct-dspp-driveds-test.driveds.com/fr/accueil.html
 		DSPP : https://master-dspp-driveds-test.driveds.com
 
-
-http://dspp.isobar.pprod.aeaws.com/v111/dspp-smarty/web/src/html/index.html
- 
-http://dspp.isobar.pprod.aeaws.com/v111/dspp-smarty-mobile/web/src/html/index.html
- 
-http://dspp.isobar.pprod.aeaws.com/v111/ds-smarty/web/src/html/sections/1colonne/default-defaut.html
-
-1colonne    
-2colonnest3      
-ajaxCreativity
-footer          
-murMedias 
-p404      
- slideshow   
-slideshowt4
-2colonnes   
-2colonnest4       
-ajaxMasterPage 
-header           
-navN2     
-p503       
-slideshowt1 
-texteSeul
-2colonnest1 
-HP                
-boussole       
-layerCookie     
-offret1   
-pageCookie 
-slideshowt2
-2colonnest2 
-ajaxCraftsmanship 
-dev            
-mentionsLegales 
-offret2   
-planDuSite 
-slideshowt3
- 
-http://dspp.isobar.pprod.aeaws.com/v111/ds-smarty-mobile/web/src/html/sections/
-
-1colonne    
-2colonnest3       
-ajaxMasterPage 
-dev              
-mur_medias 
-p404        
-slideshowt2 
-texte_seul
-2colonnes   
-2colonnest4       
-boussole       
-footer           
-navN2      
-p503        
-slideshowt3
-2colonnest1 
-ajaxCraftsmanship 
-cookies        
-header           
-offret1    
-slideshow   
-slideshowt4
-2colonnest2 
-ajaxCreativity    
-cookies_popup  
-mentions_legales 
-offret2    
-slideshowt1 
-text_riche
- 
-	 
-
 - Qualification technique et fonctionnel des livrables. 
-- Aide à la Conception des projets et formulation de propositions.
+- Aide à la Conception des projets.
 - Aide à la planification et coordination des équipes de production technique.
-- Aide à la création et utilisation d’environnement de développement (Git Repository, NodeJs grunt, Bower, Symfony) 
+- Aide à la création et utilisation des environnements de développement.
 - Création de cahier de recette.
 */

@@ -75,7 +75,8 @@ CreateDateJsonData.prototype=
 		for(var i=0; i<6; i++)
 		{
 			for(var y=0; y<7; y++)
-			{if(tableCell==Self.DataCalendrier.getFirstDayInMonth(
+			{
+				if(tableCell===Self.DataCalendrier.getFirstDayInMonth(
 						Self.DataCalendrier.currentMonth,
 						Self.DataCalendrier.choosenYear) || dayInCurentMonth>Self.DataCalendrier.getDaysInMonth(Self.DataCalendrier.currentMonth,Self.DataCalendrier.choosenYear))
 				{

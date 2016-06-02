@@ -7,54 +7,37 @@
 	font-family: "Ubuntu Light", serif;
 	margin:0;
 }
-
+/**********************************/
+/*jqueryui*/
+/**********************************/
+.ui-resizable-s {
+    cursor: s-resize;
+    height: 7px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+    border-top: darkgrey solid 1px;
+}
+.app-container
+{
+	width:97%;    
+	height:100%;    
+	margin: 0 auto;
+}
 .calendrier-app-container
 {
-	/*background:red;*/
-	margin:0 auto;
-	width: 90%;
+	width: 79%;
 	height:95%;
-		margin-top:20px;/*XXXXXXXXXXXX*/
+	margin-top:20px;
+	float:right;
+
+	display: inline-block;
 }
-
-@media screen and (max-width: 600px)
-{
-    .calendrier-app-container
-    {
-        background: lightgreen;
-    }	
-	
-	.calendrier-app-container
-	{
-		width:100%;
-	}
-
-	.calendrier-app-days-table-container, th
-	{
-		font-size: 0.5em;
-	}
-}
-
-@media screen and (max-height: 500px)
-{
-    .calendrier-app-container
-    {
-        background: lightgreen;
-    }	
-	
-	.calendrier-app-container
-	{
-			margin-top:0px;/*XXXXXXXXXXXX*/
-		height:100%;
-	}
-}
-
 .calendrier-app-days-table-container, td
 {
 	border-collapse:collapse;
 	border: 1px solid lightgrey;
 	width:100%;
-	/*height:100%;*/
 }
 .calendrier-app-days-table-container, th
 {
@@ -68,7 +51,6 @@
 	font-weight: bold;
 	font-size: 2em;
 	width:100%;
-											/*height:7%;*/
 }
 .calendrier-app-day-th-container
 {
@@ -90,7 +72,6 @@
 #calendrier-app-table-header-left-arrow-container
 {
 	display: inline-block;
-	/*width:20%;*/
 }
 #calendrier-app-table-header-left-arrow-container:hover
 {
@@ -108,7 +89,6 @@
 #calendrier-app-table-header-right-arrow-container
 {
 	display: inline-block;
-	/*width:20%;*/
 }
 #calendrier-app-table-header-right-arrow-container:hover
 {
@@ -133,35 +113,24 @@
 	font-size: 1.5em;
 	width:94.5%;
 	float:right;
-											/*height:7%;*/
 }
 .calendrier-app-week-day-th-container
 {
 											height:5%;
 }
-/*
-.calendrier-app-week-day-td-container:hover
-{
-	background-color:lightgrey;
-}*/
-/*#calendrier-app-week-day-td-container-1:hover
-{
-	background-color:white;
-}*/
 .calendrier-app-week-day-td-container
 {
 	color:black;
 	font-size: 1em;
     vertical-align: text-top;
 	width:12.5%;
-											/*height:90%;*/
 }
 .calendrier-app-week-hour-day-td-container
 {
 	text-align: center;
 	width:5%;
-	/*font-weight: bold;*/
-	font-size: 1em;
+	font-size: 0.8em;
+	vertical-align: bottom;
 }
 #calendrier-app-week-table-header-left-arrow-container
 {
@@ -195,19 +164,19 @@
 .calendrier-modale-app-lit-cont
 {
 	position:fixed;
-	top:0;
-	left:0;
+	top:0px;
+	left:0px;
 	width: 100%;
 	height: 100%;
-    z-index:1;
+    z-index:2;
 }
 .calendrier-app-lit-container
 {
 	position: fixed;
     width: 15%;   
-    min-width: 145px;
-    margin-top: -40.5%;
-    margin-left: 45%;
+    width: 160px;
+    top: 3%;
+    left: calc(90% - 160px);
     background-color:white;
     z-index:2;
 }
@@ -221,22 +190,18 @@
 	border-collapse:collapse;
 	border: 1px solid lightgrey;
 	width:100%;
-	/*height:100%;*/
 }
 #calendrier-app-lit-table-header-container
 {
 	text-align: center;
 	background-color: lightgrey;
 	font-size: 1em;
-	/*width:100%;*/
-										/*	height:7%;*/
 }
 /*Head*/
 #calendrier-app-lit-table-header-left-arrow-container
 {
 	float:left;
 	display: inline;
-	/*margin-left: 10%;*/
 }
 #calendrier-app-lit-table-header-left-arrow-container:hover
 {
@@ -250,7 +215,6 @@
 {
 	float:right;
 	display: inline;
-	/*margin-right: 10%;*/
 }
 #calendrier-app-lit-table-header-right-arrow-container:hover
 {
@@ -262,7 +226,7 @@
 	padding:2px;
 	font-size: 0.8em;
 	color:darkgrey;	
-	width:14.285%;
+	width:15%;
 }
 .calendrier-app-lit-day-real-days-in-month-td-container
 {
@@ -278,4 +242,221 @@
 #calendrier-app-lit-day-tr-container-1:hover
 {
 	background-color:white;
+}
+
+/*******************************************************************************************/
+
+
+							/*TAB*/
+
+
+/*******************************************************************************************/
+.tabs-app-container
+{
+	height:100%;
+	width:20%;
+	display: inline-block;
+    font-size: 0.9em;
+}
+#tabs-names-app-container
+{
+    border-left: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;
+}
+.ressources-tab-app-container:hover
+{
+    background: lightgrey;
+    border-color: darkgrey;
+}
+.tabs-name-tab-app-container
+{
+    padding: 2 10 2 5;
+    color: darkgrey;
+    background-color: lightgrey;
+    display: inline-block;
+    border-top: 1px solid darkgrey;	
+    border-right: 1px solid darkgrey;
+}
+.tabs-name-tab-app-container:hover
+{
+    color: black;
+    background-color: darkgrey;
+}
+.tabs-current-tab-app
+{
+	position: relative;
+	margin-bottom: -1px;
+    background-color: white;
+	color: black;
+    border-bottom: 1px solid white;
+}
+.tabs-current-tab-app:hover
+{
+    background-color: white;	
+}
+#tabs-contenu-app-container
+{
+    border-left: 1px solid darkgrey;
+    border-right: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;
+    padding: 5 0 0 0;
+}
+.ressources-tab-app-container
+{
+    text-align: left;
+    height: 17px;
+    display: block;
+    padding: 5 0 5 5;
+    border: 1px solid darkgrey;
+    /* border-right: 1px solid darkgrey; */
+    /* border-left: 1px solid darkgrey; */
+    margin: 0 5 5 5;
+}
+
+.ressources-more-tab-app-container
+{
+    height: 17px;
+    display: block;
+    text-align: center;
+    padding: 5;
+    font-size:5em;
+    /*color:darkgrey;*/
+    /*position:relative;*/
+	/*background-color:red;*/
+     /*border-right: 1px solid darkgrey; 
+     border-left: 1px solid darkgrey; */
+}
+.ressources-more-tab-app
+{
+	height: 14px;
+	width: 14px;
+	margin:0 auto;
+	background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-image:url(img/more.png);
+}
+.ressources-more-tab-app:hover
+{
+    background-position: center top;
+    background-position: -14px 0px;
+}
+/*********************************************************************
+
+						TASK
+
+**********************************************************************/
+.calendrier-app-hour-title-task-container
+{
+	margin-left:2.5%;
+    float:left;
+}
+.calendrier-app-task-container
+{
+	overflow: hidden;
+	position:absolute;
+    width: 136px;
+    height: 18px;
+    background: #ccc;
+}
+.calendrier-app-month-task
+{
+	width:calc(100% - 4px);
+	height: 10px;
+	float:left;
+	margin:1px;
+    padding-bottom: 5px;
+    font-size: 0.8em;
+    text-align: center;
+	border:1px solid darkgrey;
+	background-color:lightgrey; 
+}
+.calendrier-app-task-demi-hour-start-container
+{
+    margin-top: 0.9%;
+}
+.calendrier-app-task-demi-hour-end-container
+{
+	float: left;
+}
+.calendrier-app-hour-task-container
+{
+	font-size:0.8em;
+
+}
+.calendrier-app-hour-start-task-container
+{
+	margin-left:2.5%;
+	float: left;
+}
+.calendrier-app-hour-end-task-container
+{
+	margin-left:2.5%;
+	float: left;
+}
+.calendrier-app-hour-total-task-container
+{
+	margin-left:2.5%;
+	float: left;
+
+}
+.calendrier-app-task-desc-container
+{
+	float : left;
+	display : block;
+	margin-top : 14px;
+	width : 100%;
+}
+.calendrier-app-day-task-hover
+{
+	font-size: 0.9em;
+	position : absolute;
+	z-index: 10;
+	/*display:none;*/
+	padding: 5px;
+	border : 1px solid darkgrey;
+	background-color : lightgrey;
+	margin-left:1px;
+}
+@media screen and (max-width: 600px)
+{
+	.app-container
+	{
+		width:100%;
+	}
+	.tabs-app-container
+	{
+		display:inline;		
+	}
+	.calendrier-app-container
+	{
+		display:inline;	
+	    width: 80%;
+	    height: 95%;
+	    margin: auto;
+	    /*float: auto;*/
+   		float: none;
+
+	}
+	.calendrier-app-days-table-container, th
+	{
+		font-size: 0.5em;
+	}
+}
+
+@media screen and (max-height: 500px)
+{
+    .calendrier-app-container
+    {
+		display:inline;
+        background: lightgreen;
+	    width: 90%;
+	    height: 95%;
+	    margin: auto;
+    }	
+	
+	.calendrier-app-container
+	{
+		margin-top:0px;
+		height:100%;
+	}
 }
