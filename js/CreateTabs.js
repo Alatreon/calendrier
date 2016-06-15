@@ -1,12 +1,5 @@
 function CreateTabs ()
 {
-	this.ressources=[
-		{ "_id" : "56fa8dda1307bd2c244c8ffc", "name" : "Marie-Joséeee","email" : "test@test.fr"},
-		{ "_id" : "56fa8dfd36153fb420020ab0", "name" : "Marie-Josée", "email" : "test@test.fr"},
-		{ "_id" : "56fa8e4b51aa901405d83367", "name" : "Marie-Josiane", "email" : "test@test.fr"},
-		{ "_id" : "56fa8e6f0d1b2b48222b2625", "name" : "Marie", "email" : "test@test.fr"},
-		{ "_id" : "56fa8ebeaf3fec6c1ae76bb9", "name" : "José", "email" : "test@test.fr"},
-		{ "_id" : "56fa8ee3af3fec6c1ae76bbb", "name" : "Josiane", "email" : "test@test.fr"}];
 	this.tabs=[
 		{ "name" : "Taches"},
 		{ "name" : "Ressources"},
@@ -52,25 +45,14 @@ CreateTabs.prototype =
 	},
 	CreateRessourcesTab : function ()
 	{
-		for(var i=0; i<this.ressources.length; i++)
-		{
-			var dayTitle=document.createElement('div');
-			dayTitle.setAttribute("id","ressources-tab-app-container-"+i);
-			dayTitle.setAttribute("class","ressources-tab-app-container");
-			$("#tabs-contenu-app-container")[0].appendChild(dayTitle);
-			$("#ressources-tab-app-container-"+i).text(this.ressources[i].name);
-		}
-
-	},
-	CreateRessourcesTab : function ()
-	{
+		var self=this;
 		for(var i=0; i<Self.CreateJsonTask.userTask.length; i++)
 		{
 			var dayTitle=document.createElement('div');
 			dayTitle.setAttribute("id","ressources-tab-app-container-"+i);
 			dayTitle.setAttribute("class","ressources-tab-app-container");
 			$("#tabs-contenu-app-container")[0].appendChild(dayTitle);
-			$("#ressources-tab-app-container-"+i).text(Self.CreateJsonTask.userTask[i].name);
+			this.addIcons(i);
 		}
 
 		var dayTitle=document.createElement('div');
@@ -78,11 +60,61 @@ CreateTabs.prototype =
 		dayTitle.setAttribute("class","ressources-more-tab-app-container");
 		$("#tabs-contenu-app-container")[0].appendChild(dayTitle);
 
-
 		var dayTitle=document.createElement('div');
 		dayTitle.setAttribute("id","ressources-more-tab-app");
 		dayTitle.setAttribute("class","ressources-more-tab-app");
 		$("#ressources-more-tab-app-container")[0].appendChild(dayTitle);
+
+		var dayTitle=document.createElement('div');
+		dayTitle.setAttribute("id","ressources-add-all-tab-app");
+		dayTitle.setAttribute("class","ressources-add-all-tab-app");
+		$("#ressources-more-tab-app-container")[0].appendChild(dayTitle);
+
+		var dayTitle=document.createElement('div');
+		dayTitle.setAttribute("id","ressources-add-all-tab-popin");
+		dayTitle.setAttribute("class","ressources-add-all-tab-popin");
+		$("#ressources-more-tab-app-container")[0].appendChild(dayTitle);
+
+		$("#ressources-add-all-tab-popin")[0].innerHTML="Envoyer toutes les demandes";
+
+		$("#ressources-add-all-tab-app")[0].addEventListener("mouseover", function(){
+			
+			$("#ressources-add-all-tab-popin")[0].style.marginRight=(($("#ressources-add-all-tab-popin").css('width').replace(/[^-\d\.]/g, ''))*(-1))-30;
+
+			$("#ressources-add-all-tab-popin")[0].style.display="block";
+		});
+		
+		$("#ressources-add-all-tab-app")[0].addEventListener("mouseleave", function(){
+
+			$("#ressources-add-all-tab-popin")[0].style.display="none";
+		});
+
+		$( "#ressources-more-tab-app" )[0].addEventListener("click", function(event)
+			{
+				Self.AddTask.createHtmlAddRessources();
+			}
+		);
+	},
+	addIcons : function (i)
+	{
+		var tabStateWording = ["Non envoyé","Wating","Validé","Refusé"];
+		var tabTitle="<div class='tab-title'>"+Self.CreateJsonTask.userTask[i].name+"</div>";
+		var tabTaskStatePopin="<div class='tab-task-state-popin tab-task-state-popin-"+Self.CreateJsonTask.userTask[i].state+"' id='tab-task-state-popin-"+i+"'>"+tabStateWording[Self.CreateJsonTask.userTask[i].state]+"</div>";
+		var tabTaskState="<div class='tab-task-state tab-task-state-"+Self.CreateJsonTask.userTask[i].state+"' id='tab-task-state-"+i+"'></div>";
+
+		$("#ressources-tab-app-container-"+i)[0].innerHTML=tabTitle+tabTaskStatePopin+tabTaskState;
+
+		$("#ressources-tab-app-container-"+i)[0].addEventListener("mouseover", function(){
+			
+			$("#tab-task-state-popin-"+i)[0].style.marginRight=(($("#tab-task-state-popin-"+i).css('width').replace(/[^-\d\.]/g, ''))*(-1))-15;
+			console.log(($("#tab-task-state-popin-"+i).css('width').replace(/[^-\d\.]/g, ''))*(-1));
+			$("#tab-task-state-popin-"+i)[0].style.display="block";
+		});
+
+		$("#ressources-tab-app-container-"+i)[0].addEventListener("mouseleave", function(){
+
+			$("#tab-task-state-popin-"+i)[0].style.display="none";
+		});
 
 	}
 }

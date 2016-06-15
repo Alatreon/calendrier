@@ -99,7 +99,6 @@ CreateWeekView.prototype=
 
 		}
 	},
-
 	createWeekTitle : function ()
 	{
 		var titreCalendrierContain = document.createElement("div");
@@ -161,7 +160,6 @@ CreateWeekView.prototype=
 			Self.removeAll();
 
 			self.litVisible=false;
-			
 
 			Self.DataCalendrier.weekInYear++;
 			// console.log(Self.DateJsonData.weekNumber.length);

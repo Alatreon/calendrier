@@ -52,6 +52,7 @@ DataCalendrier.prototype=
 	},
 	getNameMonth : function (i)
 	{
+		var month;
 		switch (i)
 		{
 			case 1:

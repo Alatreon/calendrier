@@ -15,6 +15,7 @@ CreateWeekTask.prototype=
 				var createDivTask = document.createElement("div");
 				createDivTask.setAttribute("id","calendrier-app-task-container-"+i);
 				createDivTask.setAttribute("class","calendrier-app-task-container ui-widget-content");
+				console.log(hourEndDiv);
 				$("#calendrier-app-week-day-td-container-"+hourEndDiv)[0].appendChild(createDivTask);
 				
 				this.createHourTaskHeader(i);

@@ -41,7 +41,7 @@ ActionCalendrier.prototype =
 	{
 		var clickWeekTab=Self.CreateDateJsonData.weekByNbLine(lineNumber);
 		var clickFirstWeekTab=Self.CreateDateJsonData.weekByNbLine(1);
-		console.log(clickWeekTab)
+		
 		var takeFirst=true;
 		for(var i = 0; i<Self.DateJsonData.weekNumber.length; i++)
 		{
@@ -50,14 +50,14 @@ ActionCalendrier.prototype =
 				if(Self.DateJsonData.weekNumber[i].weekTab[0]==clickWeekTab[0]&&Self.DateJsonData.weekNumber[i].monthNum[y]==Self.DataCalendrier.currentMonth && Self.DateJsonData.weekNumber[i].tableCellNum==lineNumber&&takeFirst)
 				{
 					takeFirst=false;
-					console.log(Self.DateJsonData.weekNumber[i].weekTab+' | '+Self.DateJsonData.weekNumber[i].weekTab[0]);
+					// console.log(Self.DateJsonData.weekNumber[i].weekTab+' | '+Self.DateJsonData.weekNumber[i].weekTab[0]);
 
 					Self.DataCalendrier.weekInYear=i;
 				}
 			}
 		}
 		takeFirst=true;
-    	console.log(lineNumber 	+' | ' +Self.DataCalendrier.currentMonth+' | '+Self.DataCalendrier.choosenYear);
+    	// console.log(lineNumber 	+' | ' +Self.DataCalendrier.currentMonth+' | '+Self.DataCalendrier.choosenYear);
     	$('.calendrier-app-days-table-container')[0].remove()
 		$('#calendrier-app-table-header-container').remove();
 		$('#calendrier-app-week-table-header-container').remove();

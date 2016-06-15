@@ -13,6 +13,10 @@ function CreateAppCalendrier ()
 	this.CreateWeekTask = new CreateWeekTask;
 	this.CreateMonthTask = new CreateMonthTask;
 	this.WeekUiTasks = new WeekUiTasks;
+	this.AddTask = new AddTask;
+	this.CreatePopin = new CreatePopin;
+	this.ApiRequest = new ApiRequest;
+	this.LoginApi = new LoginApi;
 	
 	/************************************************/
 
@@ -23,6 +27,10 @@ function CreateAppCalendrier ()
 }
 CreateAppCalendrier.prototype=
 {
+	login : function ()
+	{
+		Self.LoginApi.getHtml();
+	},
 	createAll : function ()
 	{
 		this.CreateCalendrier.getDefaultCalendrier();
@@ -39,12 +47,22 @@ CreateAppCalendrier.prototype=
 		// $('#calendrier-app-week-table-header-container').remove();
 	}
 }
+Date.prototype.getWeek = function() 
+{
+  var date = new Date(this.getTime());
+  date.setHours(0, 0, 0, 0);
+  date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+  var week1 = new Date(date.getFullYear(), 0, 4);
 
-		var calendrier = new CreateAppCalendrier;
+  return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+}
 
-		calendrier.createAll();
-		calendrier.CreateJsonTask.findMonthDayNum(2,5);
+var calendrier = new CreateAppCalendrier;
 
+calendrier.login();
+
+// calendrier.CreatePopin.createPopin("OH OH OH OHH ALERTE AUX MONGOLITOSSE OH OH OH OHH ALERTE AUX MONGOLITOSSE OH OH OH OHH ALERTE AUX MONGOLITOSSE LES ENFANTS ! ! !");
+// calendrier.CreatePopin.createPopin("fsgjdlsfigsdfhjbgsdfknswfd");
 /*
 BOINTEG:
 		DS.COM : https://admincom-dspp-driveds-integ.driveds.com/

@@ -34,17 +34,13 @@ CreateMonthTask.prototype=
 		$("#calendrier-app-month-task-hover"+i)[0].style.width=this.tdTwoWidth+"px";
 		$("#calendrier-app-month-task-hover"+i)[0].style.marginLeft=1+"px";
 
-		var taskMarginTop = ((-$("#calendrier-app-month-task-hover"+i).height()))/*.replace(/[^-\d\.]/g, ''))*1))+(-$("#calendrier-app-month-task-hover"+i).next().height()*4)*/;
-		
-		console.log(taskMarginTop+" | ");
-
-		console.log("next:"+(-$("#calendrier-app-month-task-hover"+i).next().height()));
+		var taskMarginTop = ((-$("#calendrier-app-month-task-hover"+i).height()));
 
 		$(append)[0].addEventListener("mouseover",function()
 			{
 				$("#calendrier-app-month-task-hover"+i)[0].style.display="block";
 				$("#calendrier-app-month-task-hover"+i)[0].style.marginTop=(-$("#calendrier-app-month-task-hover"+i).height()+(-$("#calendrier-app-month-task-hover"+i).next().height()*1.5))+"px";
-				console.log($("#calendrier-app-month-task-hover"+i).height());
+
 			});
 		$(append)[0].addEventListener("mouseleave",function()
 			{

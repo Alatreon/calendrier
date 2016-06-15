@@ -35,7 +35,7 @@ CreateLitView.prototype={
 
 		var tableCont = document.createElement('div');	
 		tableCont.setAttribute("class","calendrier-app-lit-container");
-		$('body')[0].appendChild(tableCont);
+		$('.calendrier-modale-app-lit-cont')[0].appendChild(tableCont);
 
 		var table = document.createElement('table');	
 		table.setAttribute("class","calendrier-app-lit-days-table-container");
@@ -89,14 +89,14 @@ CreateLitView.prototype={
 			}
 			tableRow++;
 		}
-		$(".calendrier-modale-app-lit-cont")[0].addEventListener("click", function (event)
+		$(".calendrier-modale-app-lit-cont").click(function (event)
 		{
-			Self.DataCalendrier.choosenYear=self.yearBeforePicking;
-			Self.DataCalendrier.currentMonth=self.monthBeforePicking;
+			Self.DataCalendrier.choosenYear=Self.CreateLitView.yearBeforePicking;
+			Self.DataCalendrier.currentMonth=Self.CreateLitView.monthBeforePicking;
 			$('.calendrier-modale-app-lit-cont').remove();
 			$('.calendrier-app-lit-container').remove();
 			self.litVisible=false;
-		}, false);
+		});
 		Self.ActionCalendrier.dayCliqueAction();
 	},
 
@@ -158,8 +158,7 @@ CreateLitView.prototype={
 			Self.CreateLitView.createLitTitle(Self.DataCalendrier.currentMonth);
 			Self.CreateLitView.createCliqueArrows(Self.DataCalendrier.currentMonth);
 			
-
-			}, false);	
+		}, false);	
 
 		$("#calendrier-app-lit-table-header-right-arrow-container")[0].addEventListener("click", function (){
 
@@ -201,7 +200,6 @@ CreateLitView.prototype={
 		$(nameSelector)[0].addEventListener("click", function (e)
 		{	
 			self.litVisible=false;
-			console.log(self.litVisible)
 			if(self.litVisible==false)
 			{
 				Self.CreateCalendrier.getLitViewCalendrier();
