@@ -65,20 +65,20 @@ ActionCalendrier.prototype =
 		$('#tabs-contenu-app-container').remove();
 		// Self.removeAll();
 		Self.CreateLitView.litVisible=true;
-		Self.CreateCalendrier.currentView=1;
+		Self.CreateCalendrier.currentView=3;
 		Self.createAll();
 	},
 	titleCliqueAction : function () 
 	{
 		$('#calendrier-app-lit-table-title-container')[0].addEventListener('click',function()
 	  	{
-			$('.calendrier-app-days-table-container')[0].remove()
+			$('.calendrier-app-days-table-container')[0].remove();
 			$('#calendrier-app-table-header-container').remove();
 			$('#calendrier-app-week-table-header-container').remove();
 			$('#tabs-names-app-container').remove();
 			$('#tabs-contenu-app-container').remove();
 			Self.CreateLitView.litVisible=true;
-			Self.CreateCalendrier.currentView=0;
+			Self.CreateCalendrier.currentView=2;
 			Self.createAll();
 	    },false);
 	},

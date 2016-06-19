@@ -171,7 +171,7 @@ AddTask.prototype=
 					],
 					[
 						["id"],
-						["task-annuler"]
+						["form-annuler"]
 					]
 				],
 				"wording":"Annuler"
@@ -316,7 +316,7 @@ AddTask.prototype=
 		self=this;
 		if(formType=="form-task")
 		{
-			$("#task-annuler")[0].addEventListener("click",function(){
+			$("#form-annuler")[0].addEventListener("click",function(){
 				$('#task-add-popup-overlay').remove();
 				$('#task-add-popup-modal').remove();			
 			});
@@ -328,9 +328,24 @@ AddTask.prototype=
 		}
 		if(formType=="signup")
 		{
-			$("#signup-valider")[0].addEventListener("click",function(){
+			$("#form-valider")[0].addEventListener("click",function(){
 
 				Self.AddTask.formSignValid();
+			});
+			$("#login-login")[0].addEventListener("click",function(){
+				Self.CreateCalendrier.currentView=0;
+				Self.CreateCalendrier.getDefaultCalendrier();
+			});
+		}
+		if(formType=="login")
+		{
+			$("#form-valider")[0].addEventListener("click",function(){
+
+				Self.AddTask.formLoginValid();
+			});
+			$("#login-singup")[0].addEventListener("click",function(){
+				Self.CreateCalendrier.currentView=1;
+				Self.CreateCalendrier.getDefaultCalendrier();
 			});
 		}
 	},
@@ -403,7 +418,7 @@ AddTask.prototype=
 		var mdpConf = "#signup-mdp-conf";
 		var email = "#signup-email";
 
-		console.log('name:'+$(name).val() +" | mdp:"+$(mdp).val() +" | mdpconf:"+ $(mdpConf).val() +" | email:"+ $(email).val() )
+		// console.log('name:'+$(name).val() +" | mdp:"+$(mdp).val() +" | mdpconf:"+ $(mdpConf).val() +" | email:"+ $(email).val() )
 
 		var boxShadow="0px 0px 1px 1px ";
 
@@ -417,8 +432,6 @@ AddTask.prototype=
 				$(name)[0].style.boxShadow = boxShadow+"red";
 				allSelectTrue[0]=false;
 			}
-
-			console.log($(mdp).val())
 
 			if($(mdp).val()!=$(mdpConf).val() || $(mdp).val()=="")
 			{
@@ -456,7 +469,63 @@ AddTask.prototype=
 
 		if(allSelectTrue[0]==true && allSelectTrue[1]==true && allSelectTrue[2]==true)
 		{
-			Self.ApiRequest.post()
+			document.getElementById("form-valider").setAttribute("id","test");
+
+			Self.ApiRequest.waiting(false);
+
+			var apiRequest = Self.ApiRequest.post({
+		        name : $(name).val(),
+		        password : $(mdp).val(),
+		        email : $(email).val(),
+		    },"signup");
+		}
+	},
+	formLoginValid : function ()
+	{		
+
+		var email = "#signup-email";
+		var mdp = "#signup-mdp";
+
+		var boxShadow="0px 0px 1px 1px ";
+
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        
+
+		var allSelectTrue = [false,false];
+			if($(mdp).val()=="")
+			{
+				$(mdp)[0].style.boxShadow = boxShadow+"red";
+
+				allSelectTrue[1]=false;
+			}
+
+			if(!re.test($(email).val()))
+			{
+				$(email)[0].style.boxShadow = boxShadow+"red";
+				allSelectTrue[0]=false;
+			}
+
+			if($(mdp).val()!="")
+			{
+				$(mdp)[0].style.boxShadow = boxShadow+"green";
+				allSelectTrue[1]=true;
+			}
+			if( re.test($(email).val()) )
+			{
+				$(email)[0].style.boxShadow = boxShadow+"green";
+				allSelectTrue[0]=true;
+			}
+
+		if(allSelectTrue[0]==true && allSelectTrue[1]==true)
+		{
+			document.getElementById("form-valider").setAttribute("id","form-valider-send");
+
+			Self.ApiRequest.waiting(false);
+
+			var apiRequest = Self.ApiRequest.post({
+		        password : $(mdp).val(),
+		        email : $(email).val(),
+		    },"authenticate");
 		}
 	}
 }

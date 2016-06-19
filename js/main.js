@@ -20,24 +20,21 @@ function CreateAppCalendrier ()
 	
 	/************************************************/
 
-	this.DateJsonData=this.CreateDateJsonData.allDatesInYear(Self.DataCalendrier.choosenYear);
+	this.DateJsonData=this.CreateDateJsonData.allDatesInYear(this.DataCalendrier.choosenYear);
 
 	
 	/***********************************************/
 }
 CreateAppCalendrier.prototype=
 {
-	login : function ()
-	{
-		Self.LoginApi.getHtml();
-	},
 	createAll : function ()
 	{
 		this.CreateCalendrier.getDefaultCalendrier();
-		this.CreateTabs.getDefaultTabs();
+		this.ApiRequest.getWaitingHtml();
 	},
 	removeAll : function ()
 	{
+		$('.form-login').remove();
 		$('div table').remove();
 		$('div #calendrier-app-week-table-header-container').remove();
 		$('#tabs-names-app-container').remove();
@@ -59,10 +56,8 @@ Date.prototype.getWeek = function()
 
 var calendrier = new CreateAppCalendrier;
 
-calendrier.login();
+calendrier.createAll();
 
-// calendrier.CreatePopin.createPopin("OH OH OH OHH ALERTE AUX MONGOLITOSSE OH OH OH OHH ALERTE AUX MONGOLITOSSE OH OH OH OHH ALERTE AUX MONGOLITOSSE LES ENFANTS ! ! !");
-// calendrier.CreatePopin.createPopin("fsgjdlsfigsdfhjbgsdfknswfd");
 /*
 BOINTEG:
 		DS.COM : https://admincom-dspp-driveds-integ.driveds.com/

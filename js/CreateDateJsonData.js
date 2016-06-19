@@ -206,7 +206,7 @@ CreateDateJsonData.prototype=
 		Self.DataCalendrier.currentWeek=currentWeek;
 		Self.DataCalendrier.choosenYear=currentYear;
 
-		console.log(this.yearJsonData);
+		// console.log(this.yearJsonData);
 		
 		return this.yearJsonData;
 	}

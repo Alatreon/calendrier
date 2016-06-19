@@ -525,6 +525,7 @@
 	border:grey solid 1px;
     z-index: 11;
 	display:none;
+	overflow: hidden;
     box-shadow: lightgrey 0px 0px 3px 3px;
 }
 .popup-app
@@ -613,6 +614,25 @@ select
 	left:0px;
 	width: 100%;
 	position:fixed;
+}
+
+/***********************************************************************************************************************/
+/*                                       Loader                                                                        */
+/***********************************************************************************************************************/
+#loader-container
+{
+	top:0px;	
+	left:0px;
+	width: 100%;
+	position:fixed;
+	z-index:10;
+}
+#loader-in
+{
+	display:none;
+	height:6px;
+	width:10px;
+	background: grey;
 }
 /***********************************************************************************************************************/
 /*                                       mediascreen                                                                   */

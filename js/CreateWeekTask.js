@@ -9,18 +9,25 @@ CreateWeekTask.prototype=
 		{
 			if(Self.CreateJsonTask.userTask[i].week==Self.DataCalendrier.weekInYear+1)
 			{
-				var hourEnd = Math.floor(Self.CreateJsonTask.userTask[i].start);
 
-				hourEndDiv = ((hourEnd)*7) + Self.CreateJsonTask.findDayNum(i);
-				var createDivTask = document.createElement("div");
-				createDivTask.setAttribute("id","calendrier-app-task-container-"+i);
-				createDivTask.setAttribute("class","calendrier-app-task-container ui-widget-content");
-				console.log(hourEndDiv);
-				$("#calendrier-app-week-day-td-container-"+hourEndDiv)[0].appendChild(createDivTask);
-				
-				this.createHourTaskHeader(i);
+					// console.log(Self.CreateDateJsonData.yearJsonData.weekNumber[Self.CreateJsonTask.userTask[i].week].yearNum)
+				if(Self.CreateJsonTask.userTask[i].year==Self.DataCalendrier.choosenYear || Self.CreateDateJsonData.yearJsonData.weekNumber[Self.CreateJsonTask.userTask[i].week].yearNum[0]==Self.DataCalendrier.choosenYear-1 || Self.CreateDateJsonData.yearJsonData.weekNumber[Self.CreateJsonTask.userTask[i].week].yearNum[0]==Self.DataCalendrier.choosenYear+1)
+				{
 
-				this.taskStartHeightSize(i);
+					console.log()
+					var hourEnd = Math.floor(Self.CreateJsonTask.userTask[i].start);
+	
+					hourEndDiv = ((hourEnd)*7) + Self.CreateJsonTask.findDayNum(i);
+					var createDivTask = document.createElement("div");
+					createDivTask.setAttribute("id","calendrier-app-task-container-"+i);
+					createDivTask.setAttribute("class","calendrier-app-task-container ui-widget-content");
+					// console.log(hourEndDiv);
+					$("#calendrier-app-week-day-td-container-"+hourEndDiv)[0].appendChild(createDivTask);
+					
+					this.createHourTaskHeader(i);
+	
+					this.taskStartHeightSize(i);
+				}
 			}
 		}
 	},

@@ -1,13 +1,13 @@
 function CreatePopin ()
 {
-
+	this.wordings=[]
 }
 CreatePopin.prototype=
 {
 	createPopin : function (wording)
 	{
+		this.wordings.push(wording);
 		this.getHtml();
-		this.setWording(wording);
 		this.setAnim();
 	},
 	getHtml : function() 
@@ -21,14 +21,19 @@ CreatePopin.prototype=
 		popupOverlayIn.setAttribute("class","popup-app-in");
 		popupOverlay.appendChild(popupOverlayIn);
 		$("body")[0].appendChild(popupOverlay);
-		this.setAnim();
+
 	},
-	setWording : function(wording)
+	setWording : function()
 	{
-		$('#popup-app-in')[0].innerHTML = wording;
+		$('#popup-app-in')[0].innerHTML = this.wordings[0];
 	},
 	setAnim : function()
 	{
-		$('#popup-app-in').fadeIn(500).delay(2000).fadeOut(500);
+		self=this;
+		$('#popup-app-in').fadeOut(0,function(){
+			self.setWording()
+		}).fadeIn(500).delay(2000).fadeOut(500,function(){
+			self.wordings.shift();
+		});
 	}
 }

@@ -1,20 +1,38 @@
 function CreateCalendrier () 
 {
-	this.currentView=0;
+	this.currentView=2;
 }
 
 CreateCalendrier.prototype=
 {	
 	getDefaultCalendrier : function ()
 	{
-		if(this.currentView==0)
+		Self.removeAll();
+		switch (this.currentView)
 		{
-			this.getMonthViewCalendrier();
+			case 0:
+				this.getloginView();
+			break;
+			case 1:
+				this.getSignUpView();
+			break;
+			case 2:
+				Self.CreateTabs.getDefaultTabs();
+				this.getMonthViewCalendrier();
+			break;
+			case 3:
+				Self.CreateTabs.getDefaultTabs();
+				this.getWeekViewCalendrier();
+			break;
 		}
-		else if(this.currentView==1)
-		{
-			this.getWeekViewCalendrier();
-		}
+	},
+	getloginView : function ()
+	{
+		Self.LoginApi.getLoginHtml();
+	},
+	getSignUpView : function ()
+	{
+		Self.LoginApi.getSignupHtml();
 	},
 	getLitViewCalendrier : function()
 	{
